@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'shopstore',
         'USER': 'dakvador',
         'PASSWORD': 'adrien',
-        'HOST': '',  # localhost si en local
+        'HOST': '127.0.0.1',  # localhost si en local
         'PORT': '5432',
     }
 }
