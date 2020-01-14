@@ -22,7 +22,9 @@ LANGUAGE = 'en-us'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('SECRET_KEY', '6n5*%wq5mv#+-xzgw)vok9dr#r)&=+3c5s#b$i(49v1of-_x6h')
+SECRET_KEY = os.environ.get('SECRET_KEY','{E0(`+8FR6smI\\)F: =7QqZ,')
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
