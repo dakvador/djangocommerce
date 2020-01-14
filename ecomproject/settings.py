@@ -20,8 +20,8 @@ LANGUAGE = 'en-us'
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6n5*%wq5mv#+-xzgw)vok9dr#r)&=+3c5s#b$i(49v1of-_x6h'
 
+SECRET_KEY = os.environ.get('SECRET_KEY', '6n5*%wq5mv#+-xzgw)vok9dr#r)&=+3c5s#b$i(49v1of-_x6h')
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'shopstore',
         'USER': 'dakvador',
         'PASSWORD': 'adrien',
-        'HOST': 'localhost',
+        'HOST': '',  # localhost si en local
         'PORT': '5432',
     }
 }
@@ -154,3 +154,4 @@ else:
         os.path.join(BASE_DIR, 'upload/static')
     ]
 
+django_heroku
