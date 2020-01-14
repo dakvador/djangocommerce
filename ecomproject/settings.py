@@ -136,9 +136,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR, 'upload/static')
-]
+
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'nomappli/static/images')
 MEDIA_URL = '/images/'
@@ -151,4 +149,8 @@ if os.environ.get('ENV') == 'PRODUCTION':
 
     db_from_env = dj_database_url.config(con_max_age=500)
     DATABASES['default'].update(db_from_env)
+else:
+    STATICFILES_DIRS =[
+        os.path.join(BASE_DIR, 'upload/static')
+    ]
 
