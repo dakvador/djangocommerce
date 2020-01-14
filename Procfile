@@ -1,1 +1,1 @@
-web: gunicorn ecomproject.wsg
+web: gunicorn ecomproject.wsgi
