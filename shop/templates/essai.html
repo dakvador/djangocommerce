@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+      <link href="../static/css/css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Calligraffitti&display=swap" rel="stylesheet">
+    <title>Title</title>
+    <style>
+        #header{
+        margin-top: 10px
+        }
+        #title{
+        font-family: 'Calligraffitti', cursive;
+        font-size: 2rem;}
+        .log{
+        padding-top:5px;
+        font-family: 'Calligraffitti', cursive;
+        font-size: 0.8rem;
+        font-weight:bold}
+
+</style>
+</head>
+
+<body>
+<div class="container" id="header" >
+  <div class="row">
+       <div class="col-5"></div>
+       <div  class="col-2" id="title"> MenShop</div>
+      <div class="col-3"></div>
+      {% if request.user.is_authenticated %}
+      <div class="col-1 log" >Logout</div>
+      {% else %}
+         <div class="col-1 log">Login</div>
+      {% endif %}
+      <div class="col-1"><i class="fas fa-shopping-cart"></i></div>
+      </div>
+    </div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  ml-auto mx-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">All</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pants</a>
+      </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Sweater</a>
+      </li>
+
+              <li class="nav-item">
+        <a class="nav-link" href="#">Shirt</a>
+      </li>
+
+              <li class="nav-item">
+        <a class="nav-link" href="#">Shoes</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+{% for item in items_list  %}
+
+<a href = "/product/{{item.id}}">
+    <div style="display:  inline-block; height:250px; width:200px; background-color: #1224e7a; margin: 20px; padding: 10px; font-size: 0.8rem; border-radius:10px; box-shadow: 0px 0px 14px -3px rgba(0,0,0,0.75);; color: black; text-align:center">
+        <div style="margin:0 30px 10px 30px">
+          {% with 'images/'|add:item.photo as imagepath %}
+            <img src="{% static  imagepath %}" style="height:150px; width:150px;">
+            {% endwith %}
+        </div>
+        <span style="color: blue ">{{ item.title }}</span><br/>
+        Price :  {{ item.price }}<br/>
+    </div>
+  </a>
+{% endfor %}
+{% if paginate %}
+  <div class="clearfix"></div>
+<div style="text-align: center">
+  <nav aria-label="">
+    <ul class="pager">
+      {% if items.has_previous %}
+          <li style="display: inline-block; "><a href="?page={{ items.previous_page_number }}">Previous</a></li>
+      {% endif %}
+      {% if items.has_next %}
+          <li style="display: inline-block;"><a href="?page={{ items.next_page_number }}">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+    </div>
+{% endif %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

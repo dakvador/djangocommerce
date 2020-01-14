@@ -1,0 +1,20 @@
+
+<div class="container" id="header" >
+  <div class="row">
+       <div class="col-5"></div>
+       <div  class="col-2" id="title"> MenShop</div>
+      <div class="col-2"></div>
+      {% if request.user.is_authenticated %}
+      <div class="col-1 log" ><a href="{% url 'logout' %}">Logout</a></div>
+      <div class="col-1 log" ><a href="../../displayallcards">Profil</a></div>
+      {% else %}
+         <div class="col-2 log"><a href="{% url 'login' %}">Login</a></div>
+      {% endif %}
+      <div class="col-1"><a href="../../displaycard"><i class="fas fa-shopping-cart"></i></a></div>
+      </div>
+    </div>
+
+
+
+
+

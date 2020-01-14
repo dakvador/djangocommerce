@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block title %}{% endblock %}</title>
+      {% include 'head.html'  %}
+</head>
+<body>
+{% include 'navbar.html'  %}
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+      {% include 'footer.html'  %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%  for order_item in order_items %}
+
+    <tr>
+      <td>{{order_item.id}}
+           <a  href="/removefromcard/{{order_item.id}}">
+            <i class="fas fa-trash-alt"></i>
+           </a>
+          {{order_item.item}}
+      </td>
+      <td>{{order_item.quantity}}</td>
+      <td>{{order_item.item.price}} $ </td>
+    </tr>
+  {% endfor %}
+      <tr>
+      <td></td>
+      <td> </td>
+      <td>Total : {{ total }} $ </td>
+    </tr>
+
+  </tbody>
+</table>
+
+ <a  href="/paiement"><button>Paiement</button></a>
+{% endblock %}

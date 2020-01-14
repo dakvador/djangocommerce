@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+Hi  {{ request.user }}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date </th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+{%  for order in orders%}
+
+    <tr>
+
+      <td>      <a href="/displaycardid/{{order.id}}">{{ order.ordered_date }}</a></td>
+      <td>{{ order.total }} $ </td>
+
+    </tr>
+
+  {% endfor %}
+
+
+  </tbody>
+</table>
+
+{% endblock %}
